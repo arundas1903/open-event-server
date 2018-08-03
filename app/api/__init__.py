@@ -205,6 +205,9 @@ api.route(TicketTagRelationshipOptional, 'ticket_tag_ticket', '/ticket-tags/<int
 api.route(TicketTagRelationshipRequired, 'ticket_tag_event', '/ticket-tags/<int:id>/relationships/event')
 
 # events
+api.route(EventRelationship, 'events_orga', '/events/<int:id>/relationships/event-orga',
+          '/events/<identifier>/relationships/event-orga')
+api.route(EventOrgaResource, 'events_orga_detail', '/events/<identifier>/event-orga', '/events/<int:id>/event-orga')
 api.route(EventList, 'event_list', '/events', '/event-types/<int:event_type_id>/events',
           '/event-topics/<int:event_topic_id>/events',
           '/event-sub-topics/<int:event_sub_topic_id>/events', '/discount-codes/<int:discount_code_id>/events',

@@ -531,18 +531,25 @@ class EventOrgaSchema(Schema):
     class Meta:
         type_ = 'event-orga'
         inflect = dasherize
-        self_view = 'v1.events_orga'
+        self_view = 'v1.events_orga_detail'
         self_view_kwargs = {'id': '<id>'}
-    
+
     id = fields.Str(dump_only=True)
     identifier = fields.Str(dump_only=True)
+    name = fields.Str(dump_only=True)
+    starts_at = fields.DateTime()
+    payment_currency = fields.Str()
+    tickets_available = fields.Str()
+    tickets_sold = fields.Number()
+    revenue = fields.Number()
 
-class EventOrgaResource(ResourceList):
+
+class EventOrgaResource(ResourceDetail):
     """
     ResourceList classs for EventOrga
     """
     schema = EventOrgaSchema
-    methods = ['POST', ]
+    methods = ["GET"]
     data_layer = {
         'class': EventOrgaLayer,
         'session': db.session

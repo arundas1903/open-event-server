@@ -206,6 +206,7 @@ class Event(SoftDeletionModel):
                  is_sponsors_enabled=None,
                  stripe_authorization=None,
                  tax=None,
+                 event_orga=None,
                  order_expiry_time=None,
                  refund_policy='All sales are final. No refunds shall be issued in any case.',
                  is_stripe_linked=False):
@@ -268,6 +269,7 @@ class Event(SoftDeletionModel):
         self.order_expiry_time = order_expiry_time
         self.refund_policy = refund_policy
         self.is_stripe_linked = is_stripe_linked
+        self.event_orga = event_orga
 
     def __repr__(self):
         return '<Event %r>' % self.name

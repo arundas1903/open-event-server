@@ -356,3 +356,10 @@ class EventSchema(EventSchemaPublic):
                                         related_view_kwargs={'event_id': '<id>'},
                                         schema='StripeAuthorizationSchema',
                                         type_='stripe-authorization')
+    event_orga = Relationship(attribute='event_orga',
+                              self_view='v1.events_orga',
+                              self_view_kwargs={'id': '<id>'},
+                              related_view='v1.event_orga_detail',
+                              related_view_kwargs={'event_id': '<id>'},
+                              schema='EventOrgaSchema',
+                              type='event-orga')
