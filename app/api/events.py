@@ -12,6 +12,7 @@ import urllib.error
 
 from app.api.bootstrap import api
 from app.api.data_layers.EventCopyLayer import EventCopyLayer
+from app.api.data_layers.EventOrgaLayer import EventOrgaLayer
 from app.api.helpers.db import save_to_db, safe_query
 from app.api.helpers.events import create_custom_forms_for_attendees
 from app.api.helpers.exceptions import ForbiddenException, ConflictException, UnprocessableEntity
@@ -521,6 +522,31 @@ class EventCopyResource(ResourceList):
     methods = ['POST', ]
     data_layer = {'class': EventCopyLayer,
                   'session': db.Session}
+
+class EventOrgaSchema(Schema):
+    """
+    Schema for Orga Events - a minified version of Events for the Organizer App
+    """
+
+    class Meta:
+        type_ = 'event-orga'
+        inflect = dasherize
+        self_view = 'v1.events_orga'
+        self_view_kwargs = {'id': '<id>'}
+    
+    id = fields.Str(dump_only=True)
+    identifier = fields.Str(dump_only=True)
+
+class EventOrgaResource(ResourceList):
+    """
+    ResourceList classs for EventOrga
+    """
+    schema = EventOrgaSchema
+    methods = ['POST', ]
+    data_layer = {
+        'class': EventOrgaLayer,
+        'session': db.session
+    }
 
 
 def start_export_tasks(event):

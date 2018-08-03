@@ -10,7 +10,7 @@ from app.api.email_notifications import EmailNotificationList, EmailNotification
     EmailNotificationRelationshipOptional, EmailNotificationRelationshipRequired
 from app.api.tickets import TicketList, TicketListPost, TicketDetail, TicketRelationshipRequired, \
     TicketRelationshipOptional
-from app.api.events import EventList, EventDetail, EventRelationship, EventCopyResource
+from app.api.events import EventList, EventDetail, EventRelationship, EventCopyResource, EventOrgaResource
 from app.api.event_types import EventTypeList, EventTypeDetail, EventTypeRelationship
 from app.api.event_locations import EventLocationList
 from app.api.event_topics import EventTopicList, EventTopicDetail, EventTopicRelationship
